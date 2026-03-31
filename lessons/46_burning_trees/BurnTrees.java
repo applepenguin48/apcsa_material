@@ -26,6 +26,24 @@ public class BurnTrees{
     ticks++;//leave this here.
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
+    int[][] nextMap = new int[map.length][map[0].length];
+    
+    for (int r = 0; r < map.length; r++) {
+        for (int c = 0; c < map[r].length; c++) {
+            
+            if (map[r][c] == FIRE) {
+                nextMap[r][c] = ASH;
+              spread(r + 1, c, nextMap);
+                spread(r - 1, c, nextMap);
+                spread(r, c + 1, nextMap);
+                spread(r, c - 1, nextMap);
+            }
+          else if (nextMap[r][c] != FIRE) {
+            nextMap[r][c] = map[r][c];
+            }
+        }
+    }
+    map = nextMap;
   }
 
   /***********************YOU MIGHT UPDATE THIS**************************/
